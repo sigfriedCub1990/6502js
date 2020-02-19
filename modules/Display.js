@@ -1,11 +1,7 @@
+import PALETTE from './constants/colors';
+
 function Display() {
   var displayArray = [];
-  var palette = [
-    "#000000", "#ffffff", "#880000", "#aaffee",
-    "#cc44cc", "#00cc55", "#0000aa", "#eeee77",
-    "#dd8855", "#664400", "#ff7777", "#333333",
-    "#777777", "#aaff66", "#0088ff", "#bbbbbb"
-  ];
   var ctx;
   var width;
   var height;
@@ -28,7 +24,7 @@ function Display() {
   }
 
   function updatePixel(addr) {
-    ctx.fillStyle = palette[memory.get(addr) & 0x0f];
+    ctx.fillStyle = PALETTE[memory.get(addr) & 0x0f];
     var y = Math.floor((addr - 0x200) / 32);
     var x = (addr - 0x200) % 32;
     ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
